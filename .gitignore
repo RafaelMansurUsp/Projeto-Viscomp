@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+*.pyc
+credenciais.txt
+.pytest_cache/
