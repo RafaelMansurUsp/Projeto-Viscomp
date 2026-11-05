@@ -1,0 +1,70 @@
+DIAGNÓSTICO — ENTREGA 1 / CHAMADAS FAPESP (VERSÃO MENSAL)
+
+1. COBERTURA E QUALIDADE DOS DADOS
+- total_csv: 297
+- duplicadas_por_link: 0
+- total_distintas: 297
+- sem_data_publicacao: 18
+- fora_intervalo_2020_2025: 2
+- sem_area_projeto: 56
+- sem_regiao: 14
+- sem_valor: 44
+- sem_moeda: 44
+- sem_grande_area_classificada: 56
+- classificadas_mistas_ou_transversais: 139
+- validas_para_analises_temporais: 277
+- registros_para_revisao: 90 (podem ter mais de um motivo)
+
+2. QUANTIDADE DE CHAMADAS POR ANO (DATA DE PUBLICAÇÃO)
+- 2020: 20
+- 2021: 45
+- 2022: 52
+- 2023: 52
+- 2024: 56
+- 2025: 52
+- media_anual: 46.17
+
+3. CHAMADAS POR GRANDE ÁREA (TODAS AS DATAS)
+- Exatas: 29 (28.4% das 3 categorias exclusivas)
+- Humanas: 36 (35.3% das 3 categorias exclusivas)
+- Biológicas: 37 (36.3% das 3 categorias exclusivas)
+- Mistas/transversais/todas as áreas, agrupadas como 'Interdisciplinar': 139
+- Sem classificação: 56
+
+4. CHAMADAS ACUMULADAS POR MÊS (APENAS DATAS EM 2020–2025)
+- Jan: 10
+- Fev: 25
+- Mar: 24
+- Abr: 35
+- Mai: 31
+- Jun: 19
+- Jul: 20
+- Ago: 15
+- Set: 32
+- Out: 24
+- Nov: 16
+- Dez: 26
+- total_analise_mensal: 277
+- mes(es)_com_mais_chamadas: Abr (35)
+- mes(es)_com_menos_chamadas: Jan (10)
+- media_por_mes_no_acumulado: 23.08
+
+5. CHAMADAS POR MÊS E ANO (VER RESUMO_ANO_MES.CSV)
+- 2020: Jan=3, Fev=5, Mar=4, Abr=0, Mai=0, Jun=1, Jul=2, Ago=0, Set=0, Out=4, Nov=1, Dez=0
+- 2021: Jan=0, Fev=8, Mar=5, Abr=7, Mai=4, Jun=3, Jul=2, Ago=0, Set=3, Out=3, Nov=5, Dez=5
+- 2022: Jan=1, Fev=3, Mar=4, Abr=8, Mai=10, Jun=7, Jul=5, Ago=5, Set=5, Out=2, Nov=1, Dez=1
+- 2023: Jan=1, Fev=2, Mar=5, Abr=6, Mai=3, Jun=3, Jul=2, Ago=3, Set=12, Out=3, Nov=4, Dez=8
+- 2024: Jan=1, Fev=2, Mar=2, Abr=10, Mai=7, Jun=1, Jul=4, Ago=3, Set=8, Out=7, Nov=2, Dez=9
+- 2025: Jan=4, Fev=5, Mar=4, Abr=4, Mai=7, Jun=4, Jul=5, Ago=4, Set=4, Out=5, Nov=3, Dez=3
+
+LIMITAÇÕES E POSSÍVEIS FALHAS DA COLETA
+- Chamadas publicadas NÃO são bolsas concedidas nem projetos aprovados.
+- Data de publicação NÃO mede o intervalo em que inscrições ficam abertas; sazonalidade é de PUBLICAÇÃO.
+- Contagens temporais excluem datas ausentes e datas fora de 2020–2025; não imputamos mês.
+- Uma ausência pode significar informação não divulgada ou não extraída; NÃO equivale automaticamente a bug.
+- 'Interdisciplinar' nesta classificação analítica inclui temas transversais, abrangência geral e múltiplas áreas.
+- Os dados de 2020 podem ter cobertura diferente; evitar alegações causais ou periodicidade garantida.
+- Valor/moeda permanecem no CSV e no scraping, mas NÃO entram nas visualizações.
+- O maior número monetário do edital pode não ser a verba disponível; não interpretar como orçamento.
+- As falhas de requisição/parse retornadas pelo endpoint de scraping não estão persistidas neste CSV.
+- Conferir amostras dos registros_para_revisao.csv e verificar se há lacunas na fonte.
