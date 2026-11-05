@@ -228,19 +228,32 @@ def grafico_meses(df: pd.DataFrame, destino: Path) -> pd.Series:
     base = df.loc[df["data_no_recorte"]]
     contagem = base.groupby("mes").size().reindex(range(1, 13), fill_value=0)
     total = int(contagem.sum())
+    media = float(contagem.mean())
     tabela = pd.DataFrame({
         "Mês": MESES,
         "Chamadas": contagem.values,
         "Participação no período (%)": [round(100 * n / total, 1) if total else 0 for n in contagem],
+        "Faixa": ["Acima da média" if n > media else "Na média ou abaixo" for n in contagem],
     })
     fig = px.bar(
         tabela, x="Mês", y="Chamadas", text="Chamadas",
+        color="Faixa",
+        color_discrete_map={
+            "Acima da média": "#087e8b",  # Turquesa para destacar meses acima da média
+            "Na média ou abaixo": "#ef4444",  # vermelho para os demais
+        },
+        category_orders={"Mês": MESES, "Faixa": ["Acima da média", "Na média ou abaixo"]},
         title="Chamadas por mês — acumulado de 2020 a 2025",
-        hover_data={"Participação no período (%)": ":.1f"},
-        labels={"Mês": "Mês de publicação", "Chamadas": "Número de chamadas"},
+        hover_data={"Participação no período (%)": ":.1f", "Faixa": True},
+        labels={"Mês": "Mês de publicação", "Chamadas": "Número de chamadas", "Faixa": "Comparação com a média"},
     )
-    fig.add_hline(y=total / 12 if total else 0, line_dash="dash",
-                  annotation_text="Média mensal", annotation_position="top left")
+    fig.add_hline(
+        y=media, line_dash="dash", line_color="#334155", line_width=1.5,
+        annotation_text=f"Média mensal: {media:.1f}",
+        annotation_position="top left",
+    )
+    fig.update_traces(textposition="outside", cliponaxis=False)
+    fig.update_layout(legend_title_text="Em relação à média dos 12 meses")
     fig.update_yaxes(rangemode="tozero")
     salvar_html(fig, destino / "03_chamadas_acumuladas_por_mes.html")
     tabela.to_csv(destino / "resumo_mensal.csv", index=False)
